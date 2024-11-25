@@ -1,0 +1,147 @@
+body{
+    overflow: hidden;
+    background-color: rgba(117, 157, 195, 0.39);
+}
+.animation-container  {
+    display: flex; /* 使用flex布局 */
+    flex-direction: row; /* 行方向布局 */
+    padding: 20px;
+    position: relative; /* 设置为相对定位 */
+}
+.animation-container h1 {
+    margin-bottom: 20px;
+    margin-left: 50px;
+    align-items: center;
+}
+.control-panel {
+    margin-left: 80px;
+    margin-bottom: 20px;
+}
+.crossroads {
+    display: flex;
+    flex-direction: column; /* 改为列方向 */
+    align-items: center;
+    width: 300px; /* 设置宽度 */
+}
+.crossroad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #101010;
+    border-radius: 10px;
+    width: 150px;
+}
+.light {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+#traffic-panel{
+    display: flex; /* 使用flex布局 */
+    border: 1px solid #000;
+    flex-direction: column; /* 列方向 */
+    align-items: center; /* 中心对齐 */
+    width: 200px; /* 设置宽度 */
+    height: 120px;
+}
+
+#history-panel {
+    position: fixed;  /* 固定位置 */
+    right: 10px;  /* 距离右边10px */
+    bottom: 10px;  /* 距离底部10px */
+    width: 500px;  /* 设定宽度 */
+    background-color: rgba(63, 180, 214, 0.16);  /* 背景色 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  /* 阴影效果 */
+    border: 1px solid rgba(27, 91, 163, 0.84);  /* 边框样式 */
+    padding: 10px;  /* 内边距 */
+    z-index: 1;
+}
+#history-container {
+    height:150px;  /* 固定高度 */
+    overflow-y: auto;  /* 垂直滚动条 */
+    padding: 0 10px;  /* 内边距 */
+    margin-top: 8px;  /* 距离标题一些距离 */
+}
+#history-panel h2 {
+    margin: 0;  /* 去掉默认外边距 */
+    background-color: rgba(255, 255, 255, 0);  /* 背景色，确保不被遮盖 */
+    position: sticky;  /* 固定在顶部 */
+    top: 0;  /* 固定在容器顶部 */
+    z-index: 10;  /* 确保在其他元素上方 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0);  /* 下边框 */
+    font-family: "Comic Sans MS", cursive, sans-serif; /* 设置字体类型 */
+}
+#history-container ul {
+    padding: 5px;  /* 去掉内边距 */
+    margin: 0;  /* 去掉外边距 */
+}
+
+.red { background-color: red; }
+.yellow { background-color: yellow; }
+.green { background-color: green; }
+
+.road-container{
+     position: relative;
+     width: 100vw; /* 视口宽度 */
+     height: 100vh; /* 视口高度 */
+     z-index: 0; /* 确保道路在小车下面 */
+}
+#road {
+    position: relative;
+    width: 200%;
+    height: 400px; /* 道路的高度 */
+    background-color: gray; /* 道路的颜色 */
+    bottom: -600px; /* 使道路在底部向下移动 */
+    transform: rotate(-45deg); /* 旋转使道路斜着 */
+    transform-origin: left bottom; /* 旋转的起点 */
+    z-index: 0; /* 确保道路在小车下面 */
+}
+
+.lane {
+    position: absolute;
+    width: 100%;
+    height: 80px; /* 每个车道的高度 */
+    bottom: 10px; /* 调整标记位置到道路中间 */
+    left: 50%; /* 从中间开始 */
+    transform: translateX(-50%); /* 向左移动一半宽度，使标记居中 */
+    border: 1px solid white; /* 车道边界 */
+}
+
+.lane:nth-child(1) {
+    top: 80px;
+}
+
+.lane:nth-child(2) {
+    top: 160px;
+}
+
+.lane:nth-child(3) {
+    top: 240px;
+}
+
+.lane:nth-child(4) {
+    top: 320px;
+}
+.car {
+    z-index: 1; /* 确保小车在道路之上 */
+    width: 50px; /* 车的宽度 */
+    height: 30px; /* 车的高度 */
+    position: absolute; /* 绝对定位 */
+    bottom: 0; /* 确保小车从道路底部开始 */
+    transition: transform 1s linear; /* 添加动画效果 */
+}
+
+@keyframes drive {  /* Safari 与 Chrome :@-webkit-keyframes */
+    from {
+        left: -50px; /* 从屏幕左侧外部开始 */
+    }
+    to {
+        left: 100%; /* 移动到屏幕右侧外部 */
+    }
+}
+
+
+

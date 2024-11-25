@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>红绿灯控制系统</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="animation-container">
+        <div>
+            <h1>红绿灯控制系统</h1>
+            <div class="control-panel">
+               <button onclick="startSimulation()" >开始模拟</button>
+               <button onclick="stopSimulation()" >停止模拟</button>
+            </div>
+            <div class="crossroads">
+                <div class="crossroad" id="crossroad-1">
+                    <div class="light red" id="red-light"></div>
+                    <div class="light yellow" id="yellow-light"></div>
+                    <div class="light green" id="green-light"></div>
+                    <p id="current-status">当前状态: 红灯</p>
+                </div>
+                <!-- 可以添加更多交叉路口 -->
+            </div>
+        </div>
+        <!-- 车流量统计 -->
+        <div id="traffic-panel">
+            <h2>车流量统计:</h2>
+            <p id="traffic-display">当前车流量: 0</p>
+            <canvas id="traffic-chart" width="400" height="200"></canvas>
+            <ul id="traffic-history"></ul>
+        </div>
+    </div>
+    <div id="history-panel">
+        <h2>红绿灯切换历史</h2>
+        <div id="history-container">
+            <ul id="history-list" ></ul>
+        </div>
+    </div>
+    <!-- background-->
+    <div class="road-container">
+        <div id="road">
+            <div class="lane"></div>
+            <div class="lane"></div>
+            <div class="lane"></div>
+            <div class="lane"></div>
+        </div>
+        <div id="background-container"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
